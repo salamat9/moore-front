@@ -2,9 +2,11 @@ import React, {useContext} from 'react';
 import MyButton from '../UI/button/MyButton';
 import {AuthContext} from '../../context';
 import './styles.scss'
+import {useNavigate} from 'react-router-dom';
 
 const Sidebar = () => {
   const {isAuth, setIsAuth} = useContext(AuthContext)
+  const navigate = useNavigate()
   
   const logout = () => {
       setIsAuth(false)
@@ -13,18 +15,25 @@ const Sidebar = () => {
   
   return (
     <div className='sidebar'>
-      <div><img src="" alt="" /></div>
-      <div>Главная</div>
-      <div>Отчеты</div>
-      <div>Квартиры</div>
-      <div>Менеджеры</div>
-      <div>Бронирования</div>
-      <hr />
-      <div>Редак. сайта</div>
-      <div>Уведомления</div>
-      <MyButton onClick={logout}>
-        Log out
-      </MyButton>
+      <div>
+        <img src="../../assets/icons/search.png" alt="search" />
+      </div>
+      <div className='main'>
+        <div className={`c-p`}
+        onClick={() => navigate(`/main`)}>Главная</div>
+        <div className='c-p'>Отчеты</div>
+        <div className='c-p' onClick={() => navigate(`/flats`)}>Квартиры</div>
+        <div className='c-p' onClick={() => navigate(`/managers`)}>Менеджеры</div>
+        <div className='c-p'>Бронирования</div>
+        <hr />
+        <div className='c-p'>Редак. сайта</div>
+      </div>
+      <div className='notification'>
+        <div className='c-p'>Уведомления</div>
+        <MyButton onClick={logout}>
+          Log out
+        </MyButton>
+      </div>
       
     </div>
   );

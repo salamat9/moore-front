@@ -5,12 +5,13 @@ import './styles.scss';
 
 const PageWrapper = ({isLoading, children}) => {
   return (
-    <div>
+    <div className='layout'>
       {isLoading ? <Loader fullHeight /> : null}
 
       <div className='layout-content'>
           <Sidebar />
-          {children}
+          <div className='layout-content__right'>{children}</div>
+          
       </div>
     </div>
   );

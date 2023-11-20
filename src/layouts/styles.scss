@@ -1,5 +1,12 @@
+.layout{
+  width: 100%;
+}
 .layout-content{
   width: 100%;
   display: flex;
-  background-color: #ECECEC;
+  background-color: #f9f9f9;
+  
+  &__right{
+    min-width: 87%;
+  }
 }

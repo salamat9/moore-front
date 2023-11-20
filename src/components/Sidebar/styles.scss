@@ -1,5 +1,37 @@
+*{
+  font-size: 16px;
+}
+
 .sidebar{
-  min-width: 150px;
+  min-width: 13%;
   height: 100vh;
-  background-color: white;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.main{
+  margin-top: 98px;
+  display: flex;
+  flex-direction: column;
+}
+
+.notification{
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.c-p{
+  cursor: pointer;
+  padding: 20px; 
+}
+
+.c-p:hover{
+  background-color: #BFC4F6;
+  border-radius: 10px;
+}
+
+hr{
+  margin-left: 20px;
+  width: calc(100% - 20px);
 }

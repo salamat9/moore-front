@@ -1,12 +1,13 @@
 import React from 'react';
 import PageWrapper from '../layouts/PageWrapper';
 
-const Main = () => {
+const Flats = () => {
+  
   return (
-      <PageWrapper>
-        Main
-      </PageWrapper>
+    <PageWrapper>
+      Flats
+    </PageWrapper>
   );
 };
 
-export default Main;
+export default Flats;
