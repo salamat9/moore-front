@@ -4,9 +4,8 @@ import {
 } from "../helpers/user";
 
 const baseURL = process.env.REACT_APP_API_URL;
-console.log('baseUrl', baseURL)
 
-const http = axios.create({ baseURL });
+const http = axios.create({baseURL});
 
 http.interceptors.request.use(
     async (config) => {
