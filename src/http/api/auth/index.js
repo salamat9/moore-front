@@ -16,5 +16,5 @@ export const signIn = async ({ email, password }) => {
         }
     } catch (err) {
         throw err;
-    }
+    };
 }
