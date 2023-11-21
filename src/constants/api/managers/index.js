@@ -1,1 +1,1 @@
-export const GET_MANAGERS = '/managers';
+export const API_MANAGERS = '/managers';

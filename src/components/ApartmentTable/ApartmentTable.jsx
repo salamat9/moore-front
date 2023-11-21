@@ -11,7 +11,7 @@ import { ReactComponent as MySvgIcon } from '../../assets/icons/points.svg';
 import './styles.scss'
 
 export default function BasicTable({data, setModal}) {
-  console.log('apartm', data);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

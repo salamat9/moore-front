@@ -1,1 +1,1 @@
-export const GET_APARTMENTS = '/apartments';
+export const API_APARTMENTS = '/apartments';
