@@ -12,8 +12,9 @@ export const getManagers = async () => {
   }
 };
 
-export const createManager = async ({ firstName, lastName, surName, phone, email, password }) => {
+export const createManager = async (data) => {
   try {
+    const { firstName, lastName, surName, phone, email, password } = data
     const response = await http.post(API_MANAGERS, {
       firstName, lastName, surName, phone, email, password,
     })
@@ -25,8 +26,9 @@ export const createManager = async ({ firstName, lastName, surName, phone, email
   };
 };
 
-export const updateManager = async ({ id, firstName, lastName, surName, phone, email }) => {
+export const updateManager = async ({ id, data }) => {
   try {
+    const { firstName, lastName, surName, phone, email } = data
     const response = await http.put(`${API_MANAGERS}/${id}`, {
       firstName, lastName, surName, phone, email,
     });
