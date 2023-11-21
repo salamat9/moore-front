@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import MyButton from '../UI/button/MyButton';
+import { ReactComponent as MySvgIcon } from '../../assets/icons/search.svg';
 import {AuthContext} from '../../context';
-import './styles.scss'
 import {useNavigate} from 'react-router-dom';
+import './styles.scss'
 
 const Sidebar = () => {
   const {isAuth, setIsAuth} = useContext(AuthContext)
@@ -15,8 +16,8 @@ const Sidebar = () => {
   
   return (
     <div className='sidebar'>
-      <div>
-        <img src="../../assets/icons/search.png" alt="search" />
+      <div className='search-icon c-p'>
+      <MySvgIcon />
       </div>
       <div className='main'>
         <div className={`c-p`}
