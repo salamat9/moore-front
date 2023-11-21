@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import PageWrapper from '../layouts/PageWrapper';
-import BasicTable from '../components/Table/MyTable';
+import BasicTable from '../components/ApartmentTable/ApartmentTable';
 import {getApartments} from '../http/api/apartments/index';
 import MyModal from '../components/UI/myModal/MyModal';
 import MyButton from '../components/UI/button/MyButton';
@@ -10,20 +10,13 @@ const Flats = () => {
   const [modal, setModal] = useState(false);
   
   const getData = async () => {
-    return await getApartments();
+    const data = await getApartments();
+    setApart(data);
   }
   
   useEffect(()=> {
-    const fetchData = async () => {
-      const data = await getData();
-      setApart(data);
-    };
-    fetchData();
+    getData()
   },[])
-  
-  useEffect(() => {
-    console.log('apartm', apartm);
-  }, [apartm])
   
   return (
     <PageWrapper>
