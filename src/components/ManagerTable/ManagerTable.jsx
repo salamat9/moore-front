@@ -6,8 +6,14 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
+import { deleteManager } from '../../http/api/managers';
 
 const ManagerTable = ({managers}) => {
+
+  const handleDelete = async (m) => {
+    await deleteManager({ id: m._id });
+  }
+
   return (
     <TableContainer component={Paper}>
     <Table aria-label="simple table">
@@ -31,7 +37,7 @@ const ManagerTable = ({managers}) => {
             <TableCell align="center">{m.email}</TableCell>
             <TableCell align="center">еуые</TableCell>
             <TableCell align="center">еуые</TableCell>
-            <TableCell align="center">еуые</TableCell>
+            <TableCell align="center" onClick={() => handleDelete(m)}>Delete</TableCell>
           </TableRow>
         ))}
       </TableBody>

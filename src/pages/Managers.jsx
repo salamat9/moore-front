@@ -18,7 +18,11 @@ const Managers = () => {
 
   return (
     <PageWrapper>
-      <ManagerTable managers={managers}/>
+      <div className='header'>Менеджеры</div>
+      <hr />
+      <div className='content-container'>
+        <ManagerTable managers={managers}/>
+      </div>
     </PageWrapper>
   );
 };
