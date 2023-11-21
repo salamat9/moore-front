@@ -36,7 +36,7 @@ const Managers = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {managers.length && managers.map((m) => (
+            {managers?.length && managers.map((m) => (
               <TableRow
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
