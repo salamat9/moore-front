@@ -9,7 +9,7 @@ import { REFRESH_TOKEN_URL, SIGN_IN_URL } from "../constants/api/auth";
 
 const baseURL = process.env.REACT_APP_API_URL;
 
-const http = axios.create({ baseURL });
+const http = axios.create({baseURL});
 
 http.interceptors.request.use(
     async (config) => {
