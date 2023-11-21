@@ -6,7 +6,7 @@ import ManagerTable from '../components/ManagerTable/ManagerTable';
 
 const Managers = () => {
   const [managers, setManagers] = useState([]);
-
+  
   const getData = async () => {
     const data = await getManagers();
     setManagers(data);
