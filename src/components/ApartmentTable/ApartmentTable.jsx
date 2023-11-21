@@ -9,9 +9,19 @@ import Paper from '@mui/material/Paper';
 import { ReactComponent as MySvgIcon } from '../../assets/icons/points.svg';
 
 import './styles.scss'
+import {useState} from 'react';
 
 export default function BasicTable({data, setModal}) {
-  console.log('apartm', data);
+  const [dropdownId, setDropdownId] = useState(null);
+  
+  const openDropdown = (id) => {
+    if (id !== undefined) {
+      setDropdownId((prevId) => (prevId === id ? null : id));
+    } else {
+      console.error('Invalid id:', id);
+    }
+  }
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -25,7 +35,7 @@ export default function BasicTable({data, setModal}) {
             <TableCell align="left">Статус</TableCell>
             <TableCell align="left">Цена</TableCell>
             <TableCell align="left">Клиент</TableCell>
-            <TableCell align="left">Бронь</TableCell>
+            <TableCell align="left">Заметки</TableCell>
             <TableCell align="left"></TableCell>
             <TableCell align="left"></TableCell>
           </TableRow>
@@ -34,7 +44,7 @@ export default function BasicTable({data, setModal}) {
           {data ? data.data.map((data) => (
             <TableRow
               className='table-header'
-              key={data.id}
+              key={data._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="left">{data.number}</TableCell>
@@ -47,7 +57,14 @@ export default function BasicTable({data, setModal}) {
               <TableCell align="left">{data.clients}</TableCell>
               <TableCell align="left">{data.updatedAt}</TableCell>
               <TableCell align="left"><div className='change'>Изменить</div></TableCell>
-              <TableCell align="left"><MySvgIcon onClick={() => setModal(true)}/></TableCell>
+              <TableCell align="left">
+                <div className='points' onClick={() => openDropdown(data._id)}>
+                  <MySvgIcon />
+                </div>
+                <div className={`dropdown ${dropdownId === data._id ? 'd-b' : 'd-n'}`}>
+                  <div className='dropdown-content' onClick={()=> setModal(true)}>Удалить</div>
+                </div>
+              </TableCell>
             </TableRow>
           )) : ''}
         </TableBody>
