@@ -66,9 +66,9 @@ export default function BasicTable({data, getData}) {
                 <div className='points' onClick={() => openDropdown(data._id)}>
                   <MySvgIcon />
                 </div>
-                <div className={`dropdown ${dropdownId === data._id ? 'd-b' : 'd-n'}`}>
-                  <div className='dropdown-content' onClick={()=> setModal({ id: data._id , visible: true })}>Удалить</div>
-                </div>
+                {dropdownId && <div className={`dropdown ${dropdownId === data._id ? 'd-b' : 'd-n'}`}>
+                  <div className='dropdown-content' onClick={() => {setDropdownId({ id: null , visible: null }); setModal({ id: data._id , visible: true })}}>Удалить</div>
+                </div>}
               </TableCell>
               <MyModal visible={modal.visible} setVisible={setModal}>
               <div>
