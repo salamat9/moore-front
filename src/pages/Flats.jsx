@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PageWrapper from '../layouts/PageWrapper';
 import BasicTable from '../components/Table/MyTable';
-import {getApartments} from '../http/api/managers';
+import {getApartments} from '../http/api/apartments/index';
 import MyModal from '../components/UI/myModal/MyModal';
 import MyButton from '../components/UI/button/MyButton';
 
