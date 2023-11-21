@@ -27,12 +27,12 @@ const ManagerTable = ({ managers }) => {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">ФИО</TableCell>
-            <TableCell align="center">Телефон</TableCell>
-            <TableCell align="center">Почта</TableCell>
-            <TableCell align="center">Дата создания</TableCell>
-            <TableCell align="center">Кол-во сделок</TableCell>
-            <TableCell align="center">Действие</TableCell>
+            <TableCell align="left">ФИО</TableCell>
+            <TableCell align="left">Телефон</TableCell>
+            <TableCell align="left">Почта</TableCell>
+            <TableCell align="left">Дата создания</TableCell>
+            <TableCell align="left">Кол-во сделок</TableCell>
+            <TableCell align="left"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -40,26 +40,28 @@ const ManagerTable = ({ managers }) => {
             <TableRow
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center">{m.lastName} {m.firstName} {m.surName}</TableCell>
-              <TableCell align="center">{m.phone}</TableCell>
-              <TableCell align="center">{m.email}</TableCell>
-              <TableCell align="center">{m.createdAt}</TableCell>
-              <TableCell align="center">{m.amountDeals ?? 0}</TableCell>
-              <TableCell align="center">
+              <TableCell align="left">{m.lastName} {m.firstName} {m.surName}</TableCell>
+              <TableCell align="left">{m.phone}</TableCell>
+              <TableCell align="left">{m.email}</TableCell>
+              <TableCell align="left">{m.createdAt}</TableCell>
+              <TableCell align="left">{m.amountDeals ?? 0}</TableCell>
+              <TableCell align="left">
                 <div className='points' onClick={() => { setShowDropdown(true); setManagerId(m._id)}}>
                   <MySvgIcon />
                 </div>
                 <div className={`dropdown ${managerId === m._id ? 'd-b' : 'd-n'}`}>
-                <div className='dropdown-content' onClick={() => {
-                    // setShowModal(true);
-                    setShowDropdown(false);
-                  }}
-                  >Изменить</div>
-                  <div className='dropdown-content' onClick={() => {
-                    setShowModal(true);
-                    setShowDropdown(false);
-                  }}
-                  >Удалить</div>
+                  <div className='dropdown-content'>
+                    <div onClick={() => {
+                      // setShowModal(true);
+                      setShowDropdown(false);
+                    }}
+                    > Изменить</div>
+                    <div onClick={() => {
+                      setShowModal(true);
+                      setShowDropdown(false);
+                    }}
+                    >Удалить</div>
+                  </div>
                 </div>
               </TableCell>
             </TableRow>
