@@ -10,8 +10,7 @@ const PageWrapper = ({isLoading, children}) => {
 
       <div className='layout-content'>
           <Sidebar />
-          <div className='layout-content__right'>{children}</div>
-          
+          <div className='layout-content__right'>{children}</div>      
       </div>
     </div>
   );
