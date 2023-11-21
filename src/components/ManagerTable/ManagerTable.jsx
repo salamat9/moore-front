@@ -21,7 +21,9 @@ const ManagerTable = ({ managers }) => {
     setManagerId(m._id);
     setShowModal(false);
   }
-
+    
+    console.log(managers);
+    
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -38,6 +40,7 @@ const ManagerTable = ({ managers }) => {
         <TableBody>
           {managers.length && managers.map((m) => (
             <TableRow
+            key={m.createdAt}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="left">{m.lastName} {m.firstName} {m.surName}</TableCell>

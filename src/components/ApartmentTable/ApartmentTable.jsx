@@ -10,17 +10,22 @@ import { ReactComponent as MySvgIcon } from '../../assets/icons/points.svg';
 
 import './styles.scss'
 import {useState} from 'react';
+import MyModal from '../UI/myModal/MyModal';
+import MyButton from '../UI/button/MyButton';
+import {deleteApartment} from '../../http/api/apartments';
 
-export default function BasicTable({data, setModal}) {
+export default function BasicTable({data, getData}) {
+  const [modal, setModal] = useState({ id: null, visible: false });
   const [dropdownId, setDropdownId] = useState(null);
-  
   const openDropdown = (id) => {
-    if (id !== undefined) {
       setDropdownId((prevId) => (prevId === id ? null : id));
-    } else {
-      console.error('Invalid id:', id);
-    }
-  }
+  };
+  
+  const deleteApartmById = async (id) => {
+    await deleteApartment({id});
+    setModal({ id: null, visible: false });
+    getData(); 
+  };
   
   return (
     <TableContainer component={Paper}>
@@ -62,9 +67,18 @@ export default function BasicTable({data, setModal}) {
                   <MySvgIcon />
                 </div>
                 <div className={`dropdown ${dropdownId === data._id ? 'd-b' : 'd-n'}`}>
-                  <div className='dropdown-content' onClick={()=> setModal(true)}>Удалить</div>
+                  <div className='dropdown-content' onClick={()=> setModal({ id: data._id , visible: true })}>Удалить</div>
                 </div>
               </TableCell>
+              <MyModal visible={modal.visible} setVisible={setModal}>
+              <div>
+                <div>Вы действительно хотите удалить квартиру?</div>
+                <div className='btns'> 
+                  <MyButton onClick={() => deleteApartmById(modal.id)}>Да</MyButton>
+                  <MyButton onClick={() => setModal({ id: null, visible: false })}>Нет</MyButton>
+                </div>
+              </div>
+            </MyModal>
             </TableRow>
           )) : ''}
         </TableBody>
