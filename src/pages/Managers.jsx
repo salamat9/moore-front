@@ -21,7 +21,7 @@ const Managers = () => {
       <div className='header'>Менеджеры</div>
       <hr />
       <div className='content-container'>
-        <ManagerTable managers={managers}/>
+        <ManagerTable getData={getData} managers={managers}/>
       </div>
     </PageWrapper>
   );
