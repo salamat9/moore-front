@@ -24,7 +24,9 @@ const ManagerTable = ({ managers, getData }) => {
     setManager(m._id);
     setShowModal(false);
   }
-
+    
+    console.log(managers);
+    
   return (
     <>
       <button onClick={() => setShowEditModal(true)}>Добавить</button>
@@ -60,7 +62,7 @@ const ManagerTable = ({ managers, getData }) => {
                       setShowDropdown(false);
                     }}
                     >Изменить</div>
-                    <div className='dropdown-content' onClick={() => {
+                    <div onClick={() => {
                       setShowModal(true);
                       setShowDropdown(false);
                     }}
