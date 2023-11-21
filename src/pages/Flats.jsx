@@ -22,7 +22,7 @@ const Flats = () => {
     <PageWrapper>
     <MyModal visible={modal} setVisible={setModal}>
       <div>
-        <div>Вы действительно хотите удалить менеджера?</div>
+        <div>Вы действительно хотите удалить квартиру?</div>
         <div className='btns'> 
           <MyButton>Да</MyButton>
           <MyButton onClick={() => setModal(false)}>Нет</MyButton>
