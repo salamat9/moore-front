@@ -1,14 +1,13 @@
 import http from "../../index";
-import {GET_APARTMENTS} from "../../../constants/api/apartments/index";
+import {GET_MANAGERS} from "../../../constants/api/managers";
 
-export const getApartments = async () => {
+export const getManagers = async () => {
   try {
-    const response = await http.get(GET_APARTMENTS);
+    const response = await http.get(GET_MANAGERS);
     if (response.request.status === 200) {
-      console.log(response.data);
-      return response.data;
+      return response.data.managers;
     }
   } catch (err) {
     throw err;
   }
-}
+};
