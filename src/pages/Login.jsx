@@ -20,8 +20,8 @@ const Login = () => {
     <div>
       <h1>Login page</h1>
       <form>
-          <MyInput type="email" placeholder='Type email...' value={email} onChange={(e) => setEmail(e.target.value)} />
-          <MyInput type="password" placeholder='Type password...' value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <MyInput required type="email" placeholder='Type email...' value={email} onChange={(e) => setEmail(e.target.value)} />
+          <MyInput required type="password" placeholder='Type password...' value={password} onChange={(e) => setPassword(e.target.value)}/>
           <MyButton onClick={handleLogin}>Log in</MyButton>
       </form>
     </div>

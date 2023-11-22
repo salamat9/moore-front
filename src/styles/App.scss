@@ -22,3 +22,26 @@
 .content-container{
   padding-top: 30px;
 }
+
+.tabs{
+  display: flex;
+}
+
+.tabs > div{
+  cursor: pointer;
+  margin: 20px 0px;
+  color: #8C8E90;
+  font-size: 18px;
+  margin-right: 20px;
+  border-bottom: 3px solid #ECECEE;
+}
+
+.tabs > div:hover{
+  color: #4D4AEA;
+  border-bottom: 3px solid #4D4AEA;
+}
+
+.tab-active{
+  color: #4D4AEA !important;
+  border-bottom: 3px solid #4D4AEA !important;
+}

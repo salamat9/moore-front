@@ -65,6 +65,7 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
             name="number"
             value={formData.number}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -88,6 +89,7 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
             name="floor"
             value={formData.floor}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -99,6 +101,7 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
             name="square"
             value={formData.square}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -110,12 +113,13 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
             name="price"
             value={formData.price}
             onChange={handleInputChange}
+            required
           />
         </label>
 
         <label className='labels'>
           <div>Статус:</div>
-          <select className='labelInput' name="status" value={formData.status} onChange={handleInputChange}>
+          <select required className='labelInput' name="status" value={formData.status} onChange={handleInputChange}>
             <option value="">Select...</option>
             {options.map((option) => (
               <option key={option.value} value={option.value}>
@@ -133,12 +137,13 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
             name="description"
             value={formData.description}
             onChange={handleInputChange}
+            required
           />
         </label>
 
         <label className='labels'>
           <div>Клиент:</div>
-          <select name="clients" value={formData.clients} onChange={handleInputChange}>
+          <select className='labelInput' name="clients" value={formData.clients} onChange={handleInputChange}>
             <option value="">Select...</option>
               {clients?.map((c) => (
                 <option value={c._id}>{c.lastName} {c.firstName}</option>
