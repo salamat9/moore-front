@@ -1,17 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import MyButton from '../UI/button/MyButton';
 import { ReactComponent as MySvgIcon } from '../../assets/icons/search.svg';
-import {AuthContext} from '../../context';
 import {useNavigate} from 'react-router-dom';
 import './styles.scss'
+import { cleanUserTokensFromLocalStorage } from '../../helpers/user';
 
 const Sidebar = () => {
-  const {isAuth, setIsAuth} = useContext(AuthContext)
   const navigate = useNavigate()
   
   const logout = () => {
-      setIsAuth(false)
-      localStorage.removeItem('auth')
+      cleanUserTokensFromLocalStorage();
+      window.location.href = '/login';
   };
   
   return (

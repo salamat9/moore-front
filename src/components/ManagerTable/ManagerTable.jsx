@@ -41,15 +41,15 @@ const ManagerTable = ({ managers, getData }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {managers.length && managers.map((m) => (
+            {managers?.length && managers.map((m) => (
               <TableRow
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left">{m.lastName} {m.firstName} {m.surName}</TableCell>
-                <TableCell align="left">{m.phone}</TableCell>
-                <TableCell align="left">{m.email}</TableCell>
-                <TableCell align="left">{m.createdAt}</TableCell>
-                <TableCell align="left">{m.amountDeals ?? 0}</TableCell>
+                <TableCell align="left">{m?.lastName} {m?.firstName} {m?.surName}</TableCell>
+                <TableCell align="left">{m?.phone}</TableCell>
+                <TableCell align="left">{m?.email}</TableCell>
+                <TableCell align="left">{m?.createdAt}</TableCell>
+                <TableCell align="left">{m?.amountDeals ?? 0}</TableCell>
                 <TableCell align="left">
                   <div className='points' onClick={() => { setShowDropdown(!showDropdown); setManager(m) }}>
                     <MySvgIcon />
