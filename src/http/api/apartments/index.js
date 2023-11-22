@@ -5,7 +5,7 @@ export const getApartments = async () => {
   try {
     const response = await http.get(API_APARTMENTS);
     if (response.request.status === 200) {
-      return response.data;
+      return response.data.apartments;
     }
   } catch (err) {
     throw err;
@@ -25,7 +25,7 @@ export const createApartment = async ({ number, floor, square, price, status, de
   };
 };
 
-export const updateApartment = async ({ id, number, floor, square, price, status, description, clients }) => {
+export const updateApartment = async (id, {  number, floor, square, price, status, description, clients }) => {
   try {
     const response = await http.put(`${API_APARTMENTS}/${id}`, {
       number, floor, square, price, status, description, clients

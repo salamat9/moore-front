@@ -27,7 +27,7 @@ const ManagerTable = ({ managers, getData }) => {
     
   return (
     <>
-      <button onClick={() => setShowEditModal(true)}>Добавить</button>
+      <button onClick={() => { setShowEditModal(true); setManager(null) }}>Добавить</button>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -54,7 +54,7 @@ const ManagerTable = ({ managers, getData }) => {
                   <div className='points' onClick={() => { setShowDropdown(!showDropdown); setManager(m) }}>
                     <MySvgIcon />
                   </div>
-                  { showDropdown && <div className={`dropdown ${manager?._id === m._id ? 'd-b' : 'd-n'}`}>
+                  {showDropdown && <div className={`dropdown ${manager?._id === m._id ? 'd-b' : 'd-n'}`}>
                     <div className='dropdown-content'>
                       <div onClick={() => {
                         setShowEditModal(true);

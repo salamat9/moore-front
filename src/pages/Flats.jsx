@@ -4,11 +4,11 @@ import BasicTable from '../components/ApartmentTable/ApartmentTable';
 import {getApartments} from '../http/api/apartments/index';
 
 const Flats = () => {
-  const [apartm, setApart] = useState();
+  const [apartments, setApartments] = useState();
   
   const getData = async () => {
     const data = await getApartments();
-    setApart(data);
+    setApartments(data);
   }
   
   useEffect(()=> {
@@ -20,7 +20,7 @@ const Flats = () => {
       <div className='header'>Квартиры</div>
       <hr />
       <div className='content-container'>
-        <BasicTable getData={getData} data={apartm}/>
+        <BasicTable getData={getData} apartments={apartments}/>
       </div>
     </PageWrapper>
   );
