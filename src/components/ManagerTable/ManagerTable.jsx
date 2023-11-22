@@ -27,7 +27,7 @@ const ManagerTable = ({ managers, getData }) => {
     
   return (
     <>
-      <button onClick={() => { setShowEditModal(true); setManager(null) }}>Добавить</button>
+      <button className='managerAddBtn' onClick={() => { setShowEditModal(true); setManager(null) }}>Добавить</button>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -82,7 +82,7 @@ const ManagerTable = ({ managers, getData }) => {
             </div>
           </div>
         </MyModal>
-        <RightModal isOpen={showEditModal} onClose={() => setShowEditModal(false)}>
+        <RightModal manager={manager} isOpen={showEditModal} onClose={() => setShowEditModal(false)}>
           <ManagerForm getData={getData} closeModal={() => setShowEditModal(false)} manager={manager} />
         </RightModal>
       </TableContainer >

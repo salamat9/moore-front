@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createManager, updateManager } from '../../http/api/managers';
+import './ManagerForm.scss'
 
 
 const ManagerForm = ({ getData, closeModal, manager }) => {
@@ -33,74 +34,78 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        first name:
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
+    <form className='managerForm' onSubmit={handleSubmit}>
+      <div className='managerForm-content'>
+        <label className='labels'>
+          <div>first name:</div>
+          <input
+            className='labelInput'
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        last name:
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
+        <label className='labels'>
+          <div>last name:</div>
+          <input
+            className='labelInput'
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        sur name:
-        <input
-          type="text"
-          name="surName"
-          value={formData.surName}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
+        <label className='labels'>
+          <div>sur name:</div>
+          <input
+            className='labelInput'
+            type="text"
+            name="surName"
+            value={formData.surName}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        Phone:
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
+        <label className='labels'>
+          <div>Phone:</div>
+          <input
+            className='labelInput'
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
+        <label className='labels'>
+          <div>Email:</div>
+          <input
+            className='labelInput'
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        password:
-        <input
-          type='password'
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
-      <button type="submit">Сохранить</button>
-      <button>Отмена</button>
+        <label className='labels'>
+          <div>password:</div>
+          <input
+            className='labelInput'
+            type='password'
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+        </label>
+      </div>
+      <div className='managerForm-btns'>
+        <button className='save-btn' type="submit">Сохранить</button>
+        <button className='cancel-btn'>Отмена</button>
+      </div>
     </form>
   );
 };
