@@ -12,8 +12,10 @@ const Login = () => {
   
   const handleLogin = async (e) => {
     e.preventDefault()
-    await signIn({ email, password });
-    setIsAuth(true)
+    const result = await signIn({ email, password });
+    if (result) {
+      setIsAuth(true);
+    }
   };
   
   return (

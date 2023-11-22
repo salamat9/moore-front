@@ -13,6 +13,7 @@ export const signIn = async ({ email, password }) => {
                 response.data.accessToken,
                 response.data.refreshToken
             )
+            return true;
         }
     } catch (err) {
         throw err;
