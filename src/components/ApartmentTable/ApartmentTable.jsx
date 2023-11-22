@@ -16,7 +16,7 @@ import MyButton from '../UI/button/MyButton';
 import { deleteApartment } from '../../http/api/apartments';
 import ApartmentForm from '../ApartmentForm/ApartmentForm';
 
-export default function BasicTable({ apartments, getData }) {
+export default function BasicTable({ buildings, apartments, getData }) {
   const [showModal, setShowModal] = useState(false);
   const [apartment, setApartment] = useState(null)
   const [showDropdown, setShowDropdown] = useState(null);
@@ -55,15 +55,15 @@ export default function BasicTable({ apartments, getData }) {
                 key={a._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell align="left">{a.number}</TableCell>
-                <TableCell align="left">{a.description}</TableCell>
-                <TableCell align="left">{a.floor}</TableCell>
-                <TableCell align="left">{a.square}</TableCell>
-                <TableCell align="left">{a.createdAt?.slice(0, 11)}</TableCell>
-                <TableCell align="left">{a.status}</TableCell>
-                <TableCell align="left">{a.price}</TableCell>
-                <TableCell align="left">{a.clients}</TableCell>
-                <TableCell align="left">{a.updatedAt}</TableCell>
+                <TableCell align="left">{a?.number}</TableCell>
+                <TableCell align="left">{a?.building?.name}</TableCell>
+                <TableCell align="left">{a?.floor}</TableCell>
+                <TableCell align="left">{a?.square}</TableCell>
+                <TableCell align="left">{a?.createdAt?.slice(0, 11)}</TableCell>
+                <TableCell align="left">{a?.status}</TableCell>
+                <TableCell align="left">{a?.price}</TableCell>
+                <TableCell align="left">{a?.clients}</TableCell>
+                <TableCell align="left">{a?.updatedAt}</TableCell>
                 <TableCell align="left"><div onClick={() => {setApartment(a); setShowEditModal(true)}} className='change'>Изменить</div></TableCell>
                 <TableCell align="left">
                   <div className='points' onClick={() => {setApartment(a); setShowDropdown(true);}}>
@@ -89,7 +89,7 @@ export default function BasicTable({ apartments, getData }) {
         </div>
       </MyModal>
       <RightModal isOpen={showEditModal} onClose={() => setShowEditModal(false)}>
-        <ApartmentForm getData={getData} closeModal={() => setShowEditModal(false)} apartment={apartment} />
+        <ApartmentForm buildings={buildings} getData={getData} closeModal={() => setShowEditModal(false)} apartment={apartment} />
       </RightModal>
     </>
   );

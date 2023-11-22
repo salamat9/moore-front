@@ -12,10 +12,10 @@ export const getApartments = async () => {
   }
 }
 
-export const createApartment = async ({ number, floor, square, price, status, description }) => {
+export const createApartment = async ({ number, floor, square, price, status, description, building }) => {
   try {
     const response = await http.post(API_APARTMENTS, {
-      number, floor, square, price, status, description
+      number, floor, square, price, status, description, building
     })
     if (response.request.status === 201) {
       return response.data;
@@ -25,10 +25,10 @@ export const createApartment = async ({ number, floor, square, price, status, de
   };
 };
 
-export const updateApartment = async (id, {  number, floor, square, price, status, description, clients }) => {
+export const updateApartment = async (id, {  number, floor, square, price, status, description, clients, building }) => {
   try {
     const response = await http.put(`${API_APARTMENTS}/${id}`, {
-      number, floor, square, price, status, description, clients
+      number, floor, square, price, status, description, clients, building
     });
     if (response.request.status === 201) {
       return response.data;

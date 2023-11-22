@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createApartment, updateApartment } from '../../http/api/apartments';
 
 
-const ApartmentForm = ({ getData, closeModal, apartment }) => {
+const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
   const [formData, setFormData] = useState({
     id: apartment?._id ?? '',
     number: apartment?.number ?? '',
@@ -12,7 +12,10 @@ const ApartmentForm = ({ getData, closeModal, apartment }) => {
     status: apartment?.status ?? '',
     description: apartment?.description ?? '',
     clients: apartment?.clients ?? null,
+    building: apartment?.building ?? null,
   });
+
+  
 
   const options = [
     { value: 'Бронь', label: 'Бронь' },
@@ -29,16 +32,14 @@ const ApartmentForm = ({ getData, closeModal, apartment }) => {
       ...formData,
       [name]: value,
     });
-    console.log('form', formData)
   };
 
   const handleSubmit = async (e) => {
-    console.log('id', apartment._id)
     e.preventDefault();
     if (apartment?._id) {
-        await updateApartment(apartment._id, formData );
+      await updateApartment(apartment._id, formData);
     } else {
-        await createApartment(formData);
+      await createApartment(formData);
     }
     await getData();
     closeModal();
@@ -54,6 +55,19 @@ const ApartmentForm = ({ getData, closeModal, apartment }) => {
           value={formData.number}
           onChange={handleInputChange}
         />
+      </label>
+      <br />
+
+      <label>
+        Объект:
+        <select name="building" value={formData.building?._id} onChange={handleInputChange}>
+          <option value="">Select...</option>
+          {buildings.map((option) => (
+            <option key={option?._id} value={option?._id}>
+              {option?.name}
+            </option>
+          ))}
+        </select>
       </label>
       <br />
 
