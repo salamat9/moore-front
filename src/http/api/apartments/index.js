@@ -1,9 +1,12 @@
 import http from "../../index";
 import { API_APARTMENTS } from "../../../constants/api/apartments/index";
 
-export const getApartments = async () => {
+export const getApartments = async (status, buildingId) => {
   try {
-    const response = await http.get(API_APARTMENTS);
+    let url = '?';
+    if (status) url += `status=${status}&`;
+    if (buildingId) url += `buildingId=${buildingId}`
+    const response = await http.get(`${API_APARTMENTS}${url}`);
     if (response.request.status === 200) {
       return response.data.apartments;
     }
