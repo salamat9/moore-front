@@ -19,7 +19,7 @@ import ApartmentForm from '../ApartmentForm/ApartmentForm';
 export default function BasicTable({ buildings, apartments, getData }) {
   const [showModal, setShowModal] = useState(false);
   const [apartment, setApartment] = useState(null)
-  const [showDropdown, setShowDropdown] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
   const handleDelete = async (id) => {
@@ -28,9 +28,10 @@ export default function BasicTable({ buildings, apartments, getData }) {
     getData();
   };
 
+  console.log(apartments);
   return (
     <>
-      <button onClick={() => {setShowEditModal(true); setApartment(null); }}>Добавить</button>
+      <button className='managerAddBtn' onClick={() => {setShowEditModal(true); setApartment(null); }}>Добавить</button>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -60,17 +61,17 @@ export default function BasicTable({ buildings, apartments, getData }) {
                 <TableCell align="left">{a?.floor}</TableCell>
                 <TableCell align="left">{a?.square}</TableCell>
                 <TableCell align="left">{a?.createdAt?.slice(0, 11)}</TableCell>
-                <TableCell align="left">{a?.status}</TableCell>
+                <TableCell align="left"><span className={`status ${a?.status === 'Активна' ? 'statusActive' : a?.status === 'Куплено' ? 'statusBuy' : 'statusBook'}`}>{a?.status}</span></TableCell>
                 <TableCell align="left">{a?.price}</TableCell>
                 <TableCell align="left">{a?.clients}</TableCell>
                 <TableCell align="left">{a?.updatedAt}</TableCell>
                 <TableCell align="left"><div onClick={() => {setApartment(a); setShowEditModal(true)}} className='change'>Изменить</div></TableCell>
                 <TableCell align="left">
-                  <div className='points' onClick={() => {setApartment(a); setShowDropdown(true);}}>
+                  <div className='points' onClick={() => {setApartment(a); setShowDropdown(!showDropdown);}}>
                     <MySvgIcon />
                   </div>
-                  {showDropdown && <div className={`dropdown ${apartment._id === a._id ? 'd-b' : 'd-n'}`}>
-                    <div className='dropdown-content' onClick={() => { console.log('wtf'); setShowDropdown(true); setShowModal(true) }}>Удалить</div>
+                  {showDropdown && <div className={`dropdown ${apartment?._id === a._id ? 'd-b' : 'd-n'}`}>
+                    <div className='dropdown-content' onClick={() => { setShowDropdown(true); setShowModal(true) }}>Удалить</div>
                   </div>}
                 </TableCell>
 
@@ -88,7 +89,7 @@ export default function BasicTable({ buildings, apartments, getData }) {
           </div>
         </div>
       </MyModal>
-      <RightModal isOpen={showEditModal} onClose={() => setShowEditModal(false)}>
+      <RightModal apartment={apartment} isOpen={showEditModal} onClose={() => setShowEditModal(false)}>
         <ApartmentForm buildings={buildings} getData={getData} closeModal={() => setShowEditModal(false)} apartment={apartment} />
       </RightModal>
     </>
