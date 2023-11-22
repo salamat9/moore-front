@@ -42,8 +42,8 @@ const ManagerTable = ({ managers, getData }) => {
           </TableHead>
           <TableBody>
             {managers?.length && managers.map((m) => (
-              <TableRow
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              <TableRow 
+                key={m._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="left">{m?.lastName} {m?.firstName} {m?.surName}</TableCell>
                 <TableCell align="left">{m?.phone}</TableCell>
@@ -73,7 +73,8 @@ const ManagerTable = ({ managers, getData }) => {
             ))}
           </TableBody>
         </Table>
-        <MyModal visible={showModal} setVisible={setShowModal}>
+      </TableContainer >
+      <MyModal visible={showModal} setVisible={setShowModal}>
           <div>
             <div>Вы действительно хотите удалить менеджера?</div>
             <div className='btns'>
@@ -85,7 +86,6 @@ const ManagerTable = ({ managers, getData }) => {
         <RightModal manager={manager} isOpen={showEditModal} onClose={() => setShowEditModal(false)}>
           <ManagerForm getData={getData} closeModal={() => setShowEditModal(false)} manager={manager} />
         </RightModal>
-      </TableContainer >
     </>
   );
 };
