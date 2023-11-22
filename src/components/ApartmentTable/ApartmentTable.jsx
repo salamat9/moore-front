@@ -28,7 +28,6 @@ export default function BasicTable({ buildings, apartments, getData }) {
     getData();
   };
 
-  console.log(apartments);
   return (
     <>
       <button className='managerAddBtn' onClick={() => {setShowEditModal(true); setApartment(null); }}>Добавить</button>

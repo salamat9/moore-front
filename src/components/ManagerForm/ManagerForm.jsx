@@ -44,6 +44,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
             name="firstName"
             value={formData.firstName}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -55,6 +56,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
             name="lastName"
             value={formData.lastName}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -66,6 +68,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
             name="surName"
             value={formData.surName}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -88,6 +91,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
+            required
           />
         </label>
 
@@ -99,6 +103,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
             name="password"
             value={formData.password}
             onChange={handleInputChange}
+            required
           />
         </label>
       </div>

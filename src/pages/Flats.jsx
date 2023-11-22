@@ -5,6 +5,8 @@ import { getApartments } from '../http/api/apartments/index';
 import { getBuildings } from '../http/api/buildings/index';
 
 const Flats = () => {
+  const [tab, setTab] = useState('');
+  const [tabAll, setTabAll] = useState('');
   const [status, setStatus] = useState('');
   const [buildingId, setBuildingId] = useState('');
   const [apartments, setApartments] = useState();
@@ -26,7 +28,6 @@ const Flats = () => {
   }, []);
 
   useEffect(() => {
-    console.log(status)
     getData(status, buildingId);
   }, [status, buildingId]);
 
@@ -43,10 +44,10 @@ const Flats = () => {
     <PageWrapper>
       <div className='header'>Квартиры</div>
       <hr />
-      <div>
-        <button onClick={() => setBuildingId('')}>Все</button>
+      <div className='tabs'>
+        <div className={tabAll ? 'tab-active' : ''} onClick={() => {setTabAll(!tabAll); setTab(''); setBuildingId('')}}>Все</div>
         {buildings && buildings.map((b) => (
-          <button key={b._id} onClick={() => setBuildingId(b._id)}>{b.name}</button>
+          <div className={tab === b?._id? 'tab-active' : ''} key={b._id} onClick={() => {setTabAll(false); setTab(b._id); setBuildingId(b._id)}}>{b.name}</div>
         ))}
       </div>
       <div>
