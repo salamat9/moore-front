@@ -10,6 +10,7 @@
 .change{
   color: #5780EB;
   font-size: 12px; 
+  cursor: pointer;
 }
 
 .btns{
@@ -51,4 +52,24 @@
 
 .points{
   cursor: pointer;
+}
+
+.status{
+  border-radius: 5px;
+  padding: 6px 8px;
+}
+
+.statusActive{
+  color: #535E7C;
+  background-color: #CEDEFC;
+}
+
+.statusBuy{
+  color: #537C55;
+  background-color: #D4FCCE;
+}
+
+.statusBook{
+  color: #7C6E53;
+  background-color: #FCECCE;
 }

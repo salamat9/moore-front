@@ -37,7 +37,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
     <form className='managerForm' onSubmit={handleSubmit}>
       <div className='managerForm-content'>
         <label className='labels'>
-          <div>first name:</div>
+          <div>First name:</div>
           <input
             className='labelInput'
             type="text"
@@ -48,7 +48,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
         </label>
 
         <label className='labels'>
-          <div>last name:</div>
+          <div>Last name:</div>
           <input
             className='labelInput'
             type="text"
@@ -59,7 +59,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
         </label>
 
         <label className='labels'>
-          <div>sur name:</div>
+          <div>Sur name:</div>
           <input
             className='labelInput'
             type="text"
@@ -70,7 +70,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
         </label>
 
         <label className='labels'>
-          <div>Phone:</div>
+          <div>Номер</div>
           <input
             className='labelInput'
             type="tel"
@@ -81,7 +81,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
         </label>
 
         <label className='labels'>
-          <div>Email:</div>
+          <div>Почта</div>
           <input
             className='labelInput'
             type="email"
@@ -92,7 +92,7 @@ const ManagerForm = ({ getData, closeModal, manager }) => {
         </label>
 
         <label className='labels'>
-          <div>password:</div>
+          <div>Временный пароль</div>
           <input
             className='labelInput'
             type='password'

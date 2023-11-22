@@ -55,99 +55,101 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Номер квартиры:
-        <input
-          type="text"
-          name="number"
-          value={formData.number}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
+    <form className='managerForm' onSubmit={handleSubmit}>
+      <div className='managerForm-content'>
+        <label className='labels'>
+          <div>Номер квартиры:</div>
+          <input
+            className='labelInput'
+            type="text"
+            name="number"
+            value={formData.number}
+            onChange={handleInputChange}
+          />
+        </label>
 
-      <label>
-        Объект:
-        <select name="building" value={formData.building?._id} onChange={handleInputChange}>
-          <option value="">Select...</option>
-          {buildings.map((option) => (
-            <option key={option?._id} value={option?._id}>
-              {option?.name}
-            </option>
-          ))}
+        <label className='labels'>
+          <div>Объект:</div>
+          <select className='labelInput' name="building" value={formData.building?._id} onChange={handleInputChange}>
+            <option value="">Select...</option>
+            {buildings.map((option) => (
+              <option key={option?._id} value={option?._id}>
+                {option?.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className='labels'>
+          <div>Этаж:</div>
+          <input
+            className='labelInput'
+            type="text"
+            name="floor"
+            value={formData.floor}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label className='labels'>
+          <div>Площадь:</div>
+          <input
+            className='labelInput'
+            type="text"
+            name="square"
+            value={formData.square}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label className='labels'>
+          <div>Цена:</div>
+          <input
+            className='labelInput'
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label className='labels'>
+          <div>Статус:</div>
+          <select className='labelInput' name="status" value={formData.status} onChange={handleInputChange}>
+            <option value="">Select...</option>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className='labels'>
+          <div>Заметки:</div>
+          <input
+            className='labelInput'
+            type='text'
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label className='labels'>
+          <div>Клиент:</div>
+          <select name="clients" value={formData.clients} onChange={handleInputChange}>
+            <option value="">Select...</option>
+              {clients?.map((c) => (
+                <option value={c._id}>{c.lastName} {c.firstName}</option>
+              ))}
         </select>
-      </label>
-      <br />
-
-      <label>
-        Этаж:
-        <input
-          type="text"
-          name="floor"
-          value={formData.floor}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
-
-      <label>
-        Площадь:
-        <input
-          type="text"
-          name="square"
-          value={formData.square}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
-
-      <label>
-        Цена:
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
-
-      <label>
-        Статус:
-        <select name="status" value={formData.status} onChange={handleInputChange}>
-          <option value="">Select...</option>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </label>
-      <br />
-
-      <label>
-        Заметки:
-        <input
-          type='text'
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-        />
-      </label>
-
-      <label>
-        Clients:
-        <select name="clients" value={formData.clients} onChange={handleInputChange}>
-        <option value="">Select...</option>
-          {clients?.map((c) => (
-            <option value={c._id}>{c.lastName} {c.firstName}</option>
-          ))}
-        </select>
-      </label>
-      <br />
-      <button type="submit">Сохранить</button>
-      <button>Отмена</button>
+        </label>
+      </div>
+     <div className='managerForm-btns'>
+        <button className='save-btn' type="submit">Сохранить</button>
+        <button className='cancel-btn'>Отмена</button>
+     </div>
     </form>
   );
 };
