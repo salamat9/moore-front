@@ -53,7 +53,7 @@ const Flats = () => {
         <label>
           Фильтр:
           <select name="status" value={options.value} onChange={(e) => setStatus(e.target.value)}>
-            <option value="">clear status</option>
+            <option value="">Все</option>
             {options.map((option) => (
               <option key={option?.value} value={option?.value}>
                 {option?.label}

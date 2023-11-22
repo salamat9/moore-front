@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createApartment, updateApartment } from '../../http/api/apartments';
+import { getManagers } from '../../http/api/managers';
 
 
 const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
+  const [clients, setClients] = useState();
   const [formData, setFormData] = useState({
     id: apartment?._id ?? '',
     number: apartment?.number ?? '',
@@ -11,11 +13,18 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
     price: apartment?.price ?? '',
     status: apartment?.status ?? '',
     description: apartment?.description ?? '',
-    clients: apartment?.clients ?? null,
+    clients: apartment?.clients ?? '',
     building: apartment?.building ?? null,
   });
 
-  
+  const getClients = async () => {
+    const data = await getManagers({ roleName: "Client" });
+    setClients(data);
+  }
+
+  useEffect(() => {
+    getClients();
+  }, []) 
 
   const options = [
     { value: 'Бронь', label: 'Бронь' },
@@ -30,7 +39,7 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === 'clients' ? [value] : value,
     });
   };
 
@@ -129,13 +138,12 @@ const ApartmentForm = ({ getData, closeModal, apartment, buildings }) => {
 
         <label className='labels'>
           <div>Клиент:</div>
-          <input
-            className='labelInput'
-            type='text'
-            name="client"
-            value={formData.clients}
-            onChange={handleInputChange}
-          />
+          <select name="clients" value={formData.clients} onChange={handleInputChange}>
+            <option value="">Select...</option>
+              {clients?.map((c) => (
+                <option value={c._id}>{c.lastName} {c.firstName}</option>
+              ))}
+        </select>
         </label>
       </div>
      <div className='managerForm-btns'>

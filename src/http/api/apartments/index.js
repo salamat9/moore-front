@@ -15,10 +15,10 @@ export const getApartments = async (status, buildingId) => {
   }
 }
 
-export const createApartment = async ({ number, floor, square, price, status, description, building }) => {
+export const createApartment = async ({ number, floor, square, price, status, description, building, clients }) => {
   try {
     const response = await http.post(API_APARTMENTS, {
-      number, floor, square, price, status, description, building
+      number, floor, square, price, status, description, building, clients
     })
     if (response.request.status === 201) {
       return response.data;

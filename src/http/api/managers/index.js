@@ -1,9 +1,9 @@
 import http from "../../index";
 import { API_MANAGERS } from "../../../constants/api/managers";
 
-export const getManagers = async () => {
+export const getManagers = async ({ roleName }) => {
   try {
-    const response = await http.get(API_MANAGERS);
+    const response = await http.get(`${API_MANAGERS}?roleName=${roleName}`);
     if (response.request.status === 200) {
       return response.data.managers;
     }
