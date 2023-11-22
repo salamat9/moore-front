@@ -62,8 +62,8 @@ export default function BasicTable({ buildings, apartments, getData }) {
                 <TableCell align="left">{a?.createdAt?.slice(0, 11)}</TableCell>
                 <TableCell align="left">{a?.status}</TableCell>
                 <TableCell align="left">{a?.price}</TableCell>
-                <TableCell align="left">{a?.clients}</TableCell>
-                <TableCell align="left">{a?.updatedAt}</TableCell>
+                <TableCell align="left">{a?.clients[0]?.lastName} {a?.clients[0]?.firstName}</TableCell>
+                <TableCell align="left">{a?.description}</TableCell>
                 <TableCell align="left"><div onClick={() => {setApartment(a); setShowEditModal(true)}} className='change'>Изменить</div></TableCell>
                 <TableCell align="left">
                   <div className='points' onClick={() => {setApartment(a); setShowDropdown(true);}}>

@@ -8,7 +8,7 @@ const Managers = () => {
   const [managers, setManagers] = useState([]);
   
   const getData = async () => {
-    const data = await getManagers();
+    const data = await getManagers({ roleName: "Manager" });
     setManagers(data);
   }
 
