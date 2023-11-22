@@ -1,0 +1,65 @@
+.managerForm{
+  height: calc(100vh - 60px);
+  padding: 20px 30px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  &-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+  
+  &-btns{
+    display: flex;
+    flex-direction: column;
+    .save-btn{
+      padding: 16px;
+      background-color: #5780EB;
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+    .cancel-btn{
+      padding: 16px;
+      border-radius: 4px;
+      opacity: 0.5;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.labels{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.labels > div {
+  opacity: 0.50;
+  color: #222222;
+}
+
+.labelInput{
+  padding: 11px 14px;
+  background: white; border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.managerAddBtn{
+  float: right;
+  margin-bottom: 30px;
+  padding: 9px 30px;
+  background: #C2E3DB; 
+  border-radius: 5px;
+  border: none;
+  color: #517268;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
